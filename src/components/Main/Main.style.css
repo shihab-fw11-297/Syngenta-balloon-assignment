@@ -1,13 +1,12 @@
 .container{
     display: flex;
-    width: auto;
-    height: auto;
+    justify-content: space-around;
     align-items: center;
 }
 
 .box {
-    width: 350px;
-    height: 350px;
+    width: 320px;
+    height: 300px;
     border: 2px solid black;
     position: relative;
     left: 0%;
@@ -15,9 +14,9 @@
     transform: translate(0%, 50%);
     display: flex;
     flex-direction: row;
-    gap: 10px;
     flex-wrap: wrap;
-    padding: 5px;
+    gap: 5px;
+    padding: 20px;
   }
 
   .balloons-containers{
@@ -26,9 +25,8 @@
     gap:5px;
     position: absolute;
     left: 50%;
-    top: 45%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px;
   }
 
   .balloons{
@@ -38,16 +36,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-     border: 1px solid black;
+      border: 1px solid black;
   }
 
   .textArea{
-    position: absolute;
-    left: 80%;
-    top: 45%;
-    transform: translate(-50%, -50%);
     width: 20%;
-    padding: 5px;
+    padding: 20px;
+    border: 1px solid black;
+    margin-top: 20%;
   }
 
   .inputField{
@@ -64,4 +60,12 @@
     color: white;
     font-size: 15px;
     font-weight: 500;
+  }
+
+  .shootBtn:hover{
+    cursor: pointer;
+  }
+
+  .boxBalloon:hover{
+    cursor: pointer;
   }
