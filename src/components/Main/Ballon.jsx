@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Balloons = ({ color }) => {
+const Balloons = ({ color,num }) => {
     return (
-        <div className='balloons' style={{ background: color }}></div>
+        <div className='balloons' style={{ background: color }}>
+            <span>{num}</span>
+        </div>
     )
 }
 

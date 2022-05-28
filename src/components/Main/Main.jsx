@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import Balloons from './Ballon';
 
 export const Main = () => {
+  //creating states for adding balloon in box or which ballon is added to box
   const [balloons, setBalloons] = useState([])
   const [shootvalue, setShootvalue] = useState("");
   const [added, setAdded] = useState([])
 
+  //generate color and number for balloon
   const balloonColor = () => {
     let arr = []
     for (let i = 1; i <= 5; i++) {
@@ -20,13 +22,25 @@ export const Main = () => {
   }, [])
 
 
+  //create function for handaling ballon 
+  //for eg. if user click 1st balloon then remove from setadded state 
+  //and add to balloon state list
+  const handleBalloon = (e)=>{
+    let newArr = added.filter((elem)=>e[1]!==elem[1])
+    setAdded([...newArr])
+    setBalloons([...balloons, e].sort((a,b)=>a[1]-b[1]))
+  }
+
+  //take a number for ballon and push that ballooon in added list and remove from setballoons
   const HandleShoot = () => {
-    let balloon = balloons.find((el)=>el[1]==shootvalue)
+    // eslint-disable-next-line eqeqeq
+    let balloon = balloons.find((e)=>e[1]==shootvalue)
     if(!balloon){
      alert("enter a valid number")
       return
     }
-    const newArr = balloons.filter((el)=>el[1]!=shootvalue)
+    // eslint-disable-next-line eqeqeq
+    const newArr = balloons.filter((e)=>e[1]!=shootvalue)
     setBalloons([...newArr])
     setAdded([...added, balloon])
   }
@@ -37,8 +51,8 @@ export const Main = () => {
       <div className="box">
       {added.map((el)=>{
         return(
-          <div>
-             <Balloons color={el[0]} />
+          <div onClick={()=>handleBalloon(el)}>
+             <Balloons color={el[0]} num={el[1]}/>
           </div>
         )
       })}
@@ -47,7 +61,7 @@ export const Main = () => {
       <div className='balloons-containers'>
         {
           balloons.map((el) =>
-            <Balloons color={el[0]} />
+            <Balloons key={el[1]} color={el[0]} num={el[1]}/>
           )}
       </div>
 
